@@ -1,0 +1,16 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* .main {
+} */
+input {
+  width: 50%;
+  padding: 10px 0 10px 5px;
+  border-radius: 5px;
+  outline: none;
+}
+button {
+  padding: 10px 20px;
+}
