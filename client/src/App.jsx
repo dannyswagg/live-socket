@@ -17,11 +17,11 @@ function App() {
   return (
     <>
       <div className="main">
-        <div>
-          <h1 className="">Messages</h1>
+        <div className="messages">
+          <h1 className="text">Messages</h1>
           {messageReceived}
         </div>
-        <div>
+        <div className="input-container">
           <input
             className=""
             type="text"
