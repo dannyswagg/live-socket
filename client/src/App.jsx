@@ -1,38 +1,20 @@
-import React, { useEffect, useState } from "react";
-import io from "socket.io-client";
-const socket = io.connect("http://localhost:5174");
+import React from "react";
+import Live from "./components/Live";
+import Wrapper from "./components/Wrapper";
+import Login from "./components/Login";
+import Register from "./components/Register"
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const [message, setMessage] = useState("");
-  const [messageReceived, setMessageReceived] = useState("");
-
-  const sendMessage = () => {
-    socket.emit("send_message", { message });
-  };
-  useEffect(() => {
-    socket.on("receive_message", (data) => {
-      setMessageReceived(data.message);
-    });
-  }, [socket]);
   return (
     <>
-      <div className="main">
-        <div className="messages">
-          <h1 className="text">Messages</h1>
-          {messageReceived}
-        </div>
-        <div className="input-container">
-          <input
-            className=""
-            type="text"
-            placeholder="Send message"
-            onChange={(e) => {
-              setMessage(e.target.value);
-            }}
-          />
-          <button onClick={sendMessage}>Send</button>
-        </div>
-      </div>
+      <Routes>
+        <Route path="/" element={<Wrapper />}>
+          <Route index element={<Login />} />
+          <Route path="signup" element={<Register />} />
+        </Route>
+        <Route path="/start" element={<Live />} />
+      </Routes>
     </>
   );
 }
